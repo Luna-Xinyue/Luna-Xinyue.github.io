@@ -154,9 +154,6 @@ baseurl: ""
 
 math: mathjax
 
-scripts:
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - assets/js/mymathjax.js
 
 # ------------ The following options are not recommended to be modified ------------------
 
