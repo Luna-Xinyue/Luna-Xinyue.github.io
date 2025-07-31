@@ -64,7 +64,7 @@ Contribution
   * Effectively captures long-range dependencies
   * Laid the foundation for modern large language models
 
-<img src="Transformer_arch.png" alt="Transformer Architecture" style="width:50%; max-width:500px;"/>
+<img src="/assets/images/Transformer_arch.png" alt="Transformer Architecture" style="width:50%; max-width:500px;"/>
 
 ## Overall architechture
   * Encoder-decoder architecture
