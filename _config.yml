@@ -14,7 +14,7 @@ timezone: America/Los_Angeles
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: luna blog # the main title
+title: Luna's AI Blog # the main title
 
 tagline: AI Engineer & Researcher | AI • LLM • Systems # it will display as the subtitle
 
