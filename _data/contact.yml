@@ -2,9 +2,22 @@
 
 - type: github
   icon: "fab fa-github"
+  url: "https://github.com/luna-xinyue"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+- type: medium
+  icon: "fab fa-medium"
+  url: "https://medium.com/@fan.xinyue"
+
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/xinyuefan"
+
+- type: youtube
+  icon: "fab fa-youtube"
+  url: "https://www.youtube.com/channel/UC6H0wV5rKv1mBFNyJQ6kxjw"
+
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
