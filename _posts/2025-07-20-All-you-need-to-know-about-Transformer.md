@@ -107,8 +107,8 @@ Contribution
   - Each token generates a Query (Q), scans all Keys (K), and aggregates info from Values (V)  
   - Attention weights are assigned via Softmax
 - **Highlights**  
-  - Scaled Dot-Product Attention: \( QK^T / \sqrt{d_k} \) - Dot-product is easy to parallel and space-efficient
-  - \( QK^T \) is the attention score of all tokens to all tokens
+  - Scaled Dot-Product Attention:  \( QK^T / \sqrt{d_k} \) - Dot-product is easy to parallel and space-efficient
+  - Note:  \( QK^T \) is the attention score of all tokens to all tokens
     - The attention matrix formed after softmax is a: [Current token] ↔ [Context token] mapping
     - Each row can be understood as: "Which positions does the current token mainly focus on?"
     - This matrix can be directly visualized as a *heatmap* to see the token-to-token attention relationship
@@ -130,17 +130,21 @@ Contribution
     - **V**: Value – the actual information to be retrieved, which is weighted and aggregated based on how well the Query matches the Key
     - E.g. Like search engine. Q is search query; K is keyword in the page; V is page content. 
   - Mathematically, Q, K, V looks like this
-    - For an input sequence \( X \in \mathbb{R}^{n \times d_{\text{model}}} \) (where \( n \) is the number of tokens):
+    - For an input sequence:
+    
+      \( X \in \mathbb{R}^{n \times d_{\text{model}}} \) (where \( n \) is the number of tokens):
+
       \[
       Q = X W^Q, \quad K = X W^K, \quad V = X W^V
       \]
-      Where \( W^Q, W^K, W^V \in \mathbb{R}^{d_{\text{model}} \times d_k} \) are learnable weight matrices  
+
+      Where  \( W^Q, W^K, W^V \in \mathbb{R}^{d_{\text{model}} \times d_k} \) are learnable weight matrices  
   - All tokens compute their Q, K, V vectors **simultaneously in parallel** (via matrix operations)
   - If Q and K used the same matrix, the model loses the ability to differentiate tokens effectively  
     Separate Q/K projections allow more expressive and discriminative attention maps.
 
 - **Highlights**  
-  - Division by \( \sqrt{d_k} \) prevents large values that would cause vanishing gradients after softmax
+  - Division by  \( \sqrt{d_k} \) prevents large values that would cause vanishing gradients after softmax
 
 #### 4. Multi-Head Attention
 - **Design Purpose & Motivation**  
@@ -176,9 +180,11 @@ Contribution
   - Avoid vanishing gradients  
   - Improve convergence in deep architectures
 - **How It Works**  
+
 \[
 \text{Output} = \text{LayerNorm}(x + \text{Sublayer}(x))
 \]
+
 - **Highlights**  
   - LayerNorm normalizes across feature dimensions; suitable for variable-length inputs
 
@@ -190,7 +196,9 @@ Contribution
   - If future tokens are visible during training, the model learns to cheat
 - **How It Works**  
   - Apply a lower triangular mask (look-ahead mask) to hide future positions
-  - \[
+  - 
+  
+  \[
     \begin{bmatrix}
     1 & 0 & 0 & 0 \\
     1 & 1 & 0 & 0 \\
@@ -198,6 +206,7 @@ Contribution
     1 & 1 & 1 & 1 \\
     \end{bmatrix}
     \]
+
 - **Highlights**  
   - Not needed during inference due to autoregressive nature
 
@@ -255,9 +264,11 @@ Contribution
   - Each token is passed through a *two-layer fully connected neural network*  
   - The hidden (intermediate) layer has a **larger dimension** than input/output  
   - Typically uses ReLU (or GELU) activation in between
+
   \[
   \text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2
   \]
+
 - **Highlights**  
   - Hidden layer dimension is often 4× the model dimension (e.g., 2048 for \( d_{model} = 512 \)) 
     - Increases the nonlinear representational capacity of the model.
